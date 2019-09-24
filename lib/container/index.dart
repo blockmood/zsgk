@@ -16,10 +16,22 @@ class _IndexState extends State<Index> {
   //初始化底部导航列表
 
   final List<BottomNavigationBarItem> bottomBar = [
-    BottomNavigationBarItem(Icon(CupertinoIcons.home), title: Text('首页')),
-    BottomNavigationBarItem(Icon(CupertinoIcons.home), title: Text('咨询')),
-    BottomNavigationBarItem(Icon(CupertinoIcons.home), title: Text('消息')),
-    BottomNavigationBarItem(Icon(CupertinoIcons.home), title: Text('个人中心'))
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.home), 
+      title: Text('首页')
+    ),
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.search), 
+      title: Text('资讯')
+    ),
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.check_mark), 
+      title: Text('消息')
+    ),
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.person), 
+      title: Text('个人中心')
+    )
   ];
 
   //组件列表
@@ -37,8 +49,22 @@ class _IndexState extends State<Index> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('index'),
-    );
+    return Scaffold(
+        backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: currentIndex,
+          items: bottomBar,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+              currentPage = tabList[index];
+            });
+          },
+        ),
+        body: IndexedStack(
+          index: currentIndex,
+          children: tabList,
+        ));
   }
 }
