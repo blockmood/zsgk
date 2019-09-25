@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../searchSchool/gzx_dropdown_menu_test_page.dart';
+import '../test/test.dart';
 
 class TopNavigator extends StatelessWidget {
   final List navData;
@@ -10,17 +11,27 @@ class TopNavigator extends StatelessWidget {
   Widget _gridViewItem(BuildContext context,item){
     return InkWell(
       onTap: (){
-        if(item['text'] == '查大学'){
-          //跳转
-          Navigator.push(context, 
-            new MaterialPageRoute(builder: (context)=> GZXDropDownMenuTestPage() )
-          );
+        switch(item['text']){
+          case '查大学':{
+            Navigator.push(context, 
+              new MaterialPageRoute(builder: (context)=> GZXDropDownMenuTestPage() )
+            );
+            break;
+          }
+          case '专业解读':{
+            Navigator.push(context, 
+              new MaterialPageRoute(builder: (context)=> Test() )
+            );
+          }
         }
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SvgPicture.network(item['img'],width: ScreenUtil.getInstance().setWidth(120),),
+          item['img'].indexOf('svg') != -1 ? 
+          SvgPicture.network(item['img'],width: ScreenUtil.getInstance().setWidth(40),)
+          : Image.network(item['img'],width: ScreenUtil.getInstance().setWidth(40),)
+          ,
           Container(
             padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
             child: Text(item['text']),
@@ -33,14 +44,14 @@ class TopNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //初始化插件
-    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+    ScreenUtil.instance = ScreenUtil(width: 375, height: 667)..init(context);
 
     return Flexible(
       child: SingleChildScrollView(
         child: Container(
           child: SingleChildScrollView(
             child: Container(
-              height: ScreenUtil.getInstance().setHeight(500),
+              height: ScreenUtil.getInstance().setHeight(170),
               child: GridView.count(
                 physics: NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
