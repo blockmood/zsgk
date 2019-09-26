@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         title: '掌上高考',
         theme: ThemeData(
           primaryColor: Colors.blueAccent,
-          platform: TargetPlatform.android
+          platform: TargetPlatform.iOS
         ),
         home: Scaffold(
           body:Index()

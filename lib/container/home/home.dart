@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './TopNavigator/TopNavigator.dart';
+import './topNavigator/topNavigator.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);

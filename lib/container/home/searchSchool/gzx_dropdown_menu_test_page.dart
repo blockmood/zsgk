@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gzx_dropdown_menu/gzx_dropdown_menu.dart';
+import '../../../component/appBar/appBar.dart';
 
 class SortCondition {
   String name;
@@ -90,19 +91,7 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width, //设备的宽度
-                height: 44,
-                color: Theme.of(context).primaryColor,
-                alignment: Alignment.center,
-                child: Text(
-                  '仿美团电影下拉筛选菜单1',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              appBar(title:'查大学'),
 //              SizedBox(height: 20,),
               // 下拉菜单头部
               GZXDropDownHeader(
