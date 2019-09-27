@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gzx_dropdown_menu/gzx_dropdown_menu.dart';
 import '../../../component/appBar/appBar.dart';
+import '../../../config/base.dart';
 
 class SortCondition {
   String name;

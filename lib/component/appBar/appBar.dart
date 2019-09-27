@@ -28,6 +28,20 @@ class _appBarState extends State<appBar> {
     );
   }
 
+  Widget _title(BuildContext context){
+    return Container(
+      width: ScreenUtil.getInstance().setWidth(295),
+      child: Text(
+          widget.title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -42,17 +56,7 @@ class _appBarState extends State<appBar> {
           child: Row(
             children: <Widget>[
               _go(context),
-              Container(
-                width: ScreenUtil.getInstance().setWidth(295),
-                child: Text(
-                    widget.title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                ),
-              )
+              _title(context)
             ],
           )
     );
